@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tudor Ioan | Project</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --border-color: #30363d;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #238636;
+            color: white;
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.2s, transform 0.1s;
+            border: 1px solid rgba(240,246,252,0.1);
+        }
+
+        .download-btn:hover {
+            background-color: #2ea043;
+            transform: translateY(-2px);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accent for the "tech" look matching your PC/Case */
+        .glow {
+            width: 150px;
+            height: 150px;
+            background: var(--accent-color);
+            filter: blur(80px);
+            position: absolute;
+            z-index: -1;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    <div class="container">
+        <h1>Privacy Browser</h1>
+        <p>Un browser minimalist construit pentru viteză și intimitate, optimizat pentru workflow-uri de power user. Proiect open-source dezvoltat cu pasiune.</p>
+        
+        <a href="https://github.com/tudorioan1/repository-name/releases/latest/download/browser.zip" class="download-btn">
+            Download Browser
+        </a>
+    </div>
+
+    <footer>
+        Made by <strong>Tudor Ioan</strong> • 
+        <a href="https://github.com/tudorioan1" target="_blank">tudorioan1 on GitHub</a>
+    </footer>
+</body>
+</html>
