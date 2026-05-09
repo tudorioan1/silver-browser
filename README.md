@@ -1,5 +1,4 @@
 # silver-browser
-A privacy focused browser. Made with PyQt6.
 
 A PyQt6 desktop web browser built on Qt WebEngine/Chromium with privacy-first defaults.
 Privacy features included:
