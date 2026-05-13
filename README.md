@@ -21,3 +21,4 @@ Browser features included:
 - bookmarks and recent history
 - downloads with save prompts
 - find-in-page, zoom controls, PDF printing, page save, and developer tools
+- dark mode included
