@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silver Browser | Minimalist & Private</title>
+    <title>Silver Browser Download Page</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -77,6 +77,32 @@
             transform: translateY(0);
         }
 
+        .download-btn.disabled {
+            background-color: #21262d;
+            color: var(--text-dim);
+            border: 1px solid var(--border-color);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .download-btn.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .download-buttons .download-btn {
+            width: 100%;
+            max-width: 340px;
+            box-sizing: border-box;
+        }
+
         footer {
             margin-top: 60px;
             font-size: 0.9rem;
@@ -92,6 +118,13 @@
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        .footer-romania {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            opacity: 0.7;
         }
 
         /* Subtle glow to match your PC vibe */
@@ -115,14 +148,23 @@
         <h1>Silver Browser</h1>
         <p>A minimalist, fast, and privacy-focused web browser. Built for power users who demand control and speed without the telemetry bloat.</p>
         
-        <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser/Silver.Browser.exe" class="download-btn">
-            Download Silver Browser
-        </a>
+        <div class="download-buttons">
+            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser/Silver.Browser.AppImage" class="download-btn">
+                Download for Linux (AppImage)
+            </a>
+            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser/Silver.Browser.exe" class="download-btn">
+                Download for Windows (EXE)
+            </a>
+            <a class="download-btn disabled">
+                Download for macOS (.app) — Coming soon
+            </a>
+        </div>
     </div>
 
     <footer>
         Made by <strong>Tudor Ioan</strong> | 
         <a href="https://github.com/tudorioan1" target="_blank">tudorioan1 on GitHub</a>
+        <div class="footer-romania">🇷🇴 Proudly made in Romania</div>
     </footer>
 </body>
 </html>
