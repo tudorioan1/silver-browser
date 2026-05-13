@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silver Browser Download Page</title>
+    <title>Silver Browser | Home Page</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -13,6 +13,7 @@
             --text-dim: #8b949e;
             --border-color: #30363d;
             --success-color: #238636;
+            --warning-color: #d29922;
         }
 
         body {
@@ -23,21 +24,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
+            padding-top: 60px;
             text-align: center;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 600px;
-            padding: 50px 30px;
+            max-width: 650px;
+            width: 90%;
+            padding: 40px 30px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             position: relative;
             z-index: 1;
+            margin-bottom: 30px;
         }
 
         h1 {
@@ -48,10 +52,10 @@
         }
 
         p {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-dim);
             line-height: 1.6;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .download-btn {
@@ -59,7 +63,7 @@
             background-color: var(--success-color);
             color: #ffffff;
             padding: 16px 40px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 8px;
@@ -73,27 +77,10 @@
             box-shadow: 0 5px 15px rgba(46, 160, 67, 0.4);
         }
 
-        .download-btn:active {
-            transform: translateY(0);
-        }
-
-        .download-btn.disabled {
-            background-color: #21262d;
-            color: var(--text-dim);
-            border: 1px solid var(--border-color);
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        .download-btn.disabled:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
         .download-buttons {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             align-items: center;
         }
 
@@ -104,7 +91,7 @@
         }
 
         footer {
-            margin-top: 60px;
+            margin: 40px 0;
             font-size: 0.9rem;
             color: var(--text-dim);
             z-index: 1;
@@ -113,51 +100,141 @@
         footer a {
             color: var(--accent-color);
             text-decoration: none;
-            font-weight: 500;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
         }
 
         .footer-romania {
             margin-top: 8px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
             opacity: 0.7;
         }
 
-        /* Subtle glow to match your PC vibe */
         .glow {
             width: 400px;
             height: 400px;
             background: var(--accent-color);
             filter: blur(150px);
-            position: absolute;
+            position: fixed;
             z-index: 0;
             opacity: 0.08;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            pointer-events: none;
         }
+
+        /* --- INFO SECTION --- */
+        .info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: #21262d;
+            color: var(--text-dim);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+
+        .info-content {
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .warning-text {
+            color: var(--warning-color);
+            font-weight: bold;
+            display: block;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .platform-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-top: 20px;
+            display: block;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .hidden { display: none; }
     </style>
 </head>
 <body>
     <div class="glow"></div>
+
     <div class="container">
         <h1>Silver Browser</h1>
         <p>A minimalist, fast, and privacy-focused web browser built with PyQt6. Made for users who demand control and speed without the telemetry bloat.</p>
         
         <div class="download-buttons">
-            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver-Browser.v1.1.-.Linux" class="download-btn">
-                Download for Linux
-            </a>
-            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver-Browser.v1.1.-.Windows.exe" class="download-btn">
-                Download for Windows
-            </a>
-            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver.Browser.v1.1.-.macOS.zip" class="download-btn">
-                Download for macOS (ZIP)
-            </a>
+            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver-Browser.v1.1.-.Linux" class="download-btn">Download for Linux</a>
+            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver-Browser.v1.1.-.Windows.exe" class="download-btn">Download for Windows</a>
+            <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver.Browser.v1.1.-.macOS.zip" class="download-btn">Download for macOS (ZIP)</a>
+        </div>
+    </div>
+
+    <!-- INFO SECTION -->
+    <div class="container">
+        <div class="info-header">
+            <h2 style="margin:0; font-size: 1.4rem; color: #fff;">Guide & Info</h2>
+            <div class="lang-switch">
+                <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+                <button id="btn-ro" class="lang-btn" onclick="setLanguage('ro')">RO</button>
+            </div>
+        </div>
+
+        <!-- English Content -->
+        <div id="lang-en" class="info-content">
+            <p style="text-align: center; color: #fff; font-weight: 500;">No install needed! Just run it.</p>
+            <span class="warning-text">! Warning !</span>
+            
+            <span class="platform-title">For Windows:</span>
+            <p>If you run the executable and you receive the blue SmartScreen, it is totally normal. If I'd want to remove it, I'd have to pay some fees because I need a digital signature. I want to keep this project completely free, so that screen will still appear. Go to <strong>"More details"</strong>, and after click on <strong>"Run anyway"</strong>.</p>
+
+            <span class="platform-title">For macOS:</span>
+            <p>The same thing as for Windows, I don't want to pay to have a digital signature so the macOS Gatekeeper will say that the app is not safe, though it is. You'll have to go in <strong>Settings</strong>, and search for <strong>Security</strong>, go to <strong>Security & Privacy</strong> and scroll down. You will see <strong>"Run anyway"</strong>, click on that. After this, if the app doesn't open, go in Finder and open it again.</p>
+
+            <span class="platform-title">For Linux:</span>
+            <p>In most cases, at the first startup, you'll need to give the executable permissions to run. Go in your file manager, and go to the executable's properties. Then grant it access to run as a program.</p>
+            
+            <p style="text-align: center; margin-top: 20px; color: var(--accent-color); font-weight: bold;">Enjoy!</p>
+        </div>
+
+        <!-- Romanian Content -->
+        <div id="lang-ro" class="info-content hidden">
+            <p style="text-align: center; color: #fff; font-weight: 500;">Nu necesită instalare! Doar rulează-l.</p>
+            <span class="warning-text">! Atenție !</span>
+
+            <span class="platform-title">Pentru Windows:</span>
+            <p>Dacă rulezi executabilul și îți apare ecranul albastru SmartScreen, este perfect normal. Dacă aș dori să-l elimin, ar trebui să plătesc niște taxe pentru o semnătură digitală. Vreau să păstrez acest proiect complet gratuit, așa că acel ecran va continua să apară. Mergi la <strong>"Mai multe detalii"</strong> ("More details") și după aceea dă click pe <strong>"Rulează oricum"</strong> ("Run anyway").</p>
+
+            <span class="platform-title">Pentru macOS:</span>
+            <p>Aceeași situație ca la Windows: nu vreau să plătesc pentru o semnătură digitală, așa că macOS Gatekeeper va raporta că aplicația nu este sigură, deși este. Va trebui să mergi în <strong>Settings</strong> (Configurări), să cauți <strong>Security</strong>, să accesezi <strong>Security & Privacy</strong> și să derulezi în jos. Vei vedea opțiunea <strong>"Run anyway"</strong> (Deschide oricum); apasă pe ea. Dacă după acest pas aplicația nu se deschide, mergi în Finder și deschide-o din nou de acolo.</p>
+
+            <span class="platform-title">Pentru Linux:</span>
+            <p>În majoritatea cazurilor, la prima pornire, va trebui să îi acorzi executabilului permisiuni de rulare. Mergi în managerul de fișiere, accesează <strong>Properties</strong> (Proprietăți) pentru executabil și bifează opțiunea care îi permite să ruleze ca un program (Execute).</p>
+            
+            <p style="text-align: center; margin-top: 20px; color: var(--accent-color); font-weight: bold;">Enjoy!</p>
         </div>
     </div>
 
@@ -166,5 +243,26 @@
         <a href="https://github.com/tudorioan1" target="_blank">tudorioan1 on GitHub</a>
         <div class="footer-romania">🇷🇴 Proudly made in Romania</div>
     </footer>
+
+    <script>
+        function setLanguage(lang) {
+            const en = document.getElementById('lang-en');
+            const ro = document.getElementById('lang-ro');
+            const btnEn = document.getElementById('btn-en');
+            const btnRo = document.getElementById('btn-ro');
+
+            if (lang === 'en') {
+                en.classList.remove('hidden');
+                ro.classList.add('hidden');
+                btnEn.classList.add('active');
+                btnRo.classList.remove('active');
+            } else {
+                en.classList.add('hidden');
+                ro.classList.remove('hidden');
+                btnRo.classList.add('active');
+                btnEn.classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
