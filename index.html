@@ -10,10 +10,26 @@
             --card-bg: #161b22;
             --accent-color: #58a6ff;
             --text-main: #c9d1d9;
+            --text-heading: #ffffff;
             --text-dim: #8b949e;
             --border-color: #30363d;
             --success-color: #238636;
             --warning-color: #d29922;
+            --glow-opacity: 0.08;
+        }
+
+        /* Light Theme Variable Overrides */
+        body.light-theme {
+            --bg-color: #f6f8fa;
+            --card-bg: #ffffff;
+            --accent-color: #0969da;
+            --text-main: #24292f;
+            --text-heading: #000000;
+            --text-dim: #57606a;
+            --border-color: #d0d7de;
+            --success-color: #1a7f37;
+            --warning-color: #9a6700;
+            --glow-opacity: 0.04;
         }
 
         body {
@@ -26,28 +42,58 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding-top: 60px;
+            padding-top: 80px;
             text-align: center;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        /* Floating Theme Switcher */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 100;
+            transition: all 0.2s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-1px);
+            border-color: var(--accent-color);
+        }
+
+        /* Widened container layout for better readability */
         .container {
-            max-width: 650px;
+            max-width: 780px;
             width: 90%;
-            padding: 40px 30px;
+            padding: 40px 35px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             position: relative;
             z-index: 1;
             margin-bottom: 30px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         h1 {
             font-size: 2.8rem;
             margin-bottom: 15px;
-            color: #ffffff;
+            color: var(--text-heading);
             letter-spacing: -1px;
         }
 
@@ -86,12 +132,80 @@
 
         .download-buttons .download-btn {
             width: 100%;
-            max-width: 340px;
+            max-width: 360px;
             box-sizing: border-box;
         }
 
+        /* Download meta row (counter + bug report) */
+        .download-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+
+        .counter-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            background: rgba(139, 148, 158, 0.1);
+            padding: 7px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .bug-report-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--warning-color);
+            background: rgba(210, 153, 34, 0.08);
+            padding: 7px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--warning-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .bug-report-btn:hover {
+            background: rgba(210, 153, 34, 0.18);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(210, 153, 34, 0.2);
+        }
+
+        /* Responsive Screenshot Container with Adaptive Transitions */
+        .screenshot-container {
+            margin-top: 30px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            background: #000000;
+        }
+
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .alpha-note {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
         footer {
-            margin: 40px 0;
+            margin: 20px 0 40px 0;
             font-size: 0.9rem;
             color: var(--text-dim);
             z-index: 1;
@@ -107,6 +221,79 @@
             opacity: 0.7;
         }
 
+        /* System Requirements Panel */
+        .sys-reqs {
+            width: 90%;
+            max-width: 780px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .sys-reqs-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -0.3px;
+        }
+
+        .sys-reqs-grid {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sys-req-card {
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+            background: rgba(139, 148, 158, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .sys-req-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .sys-req-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .sys-req-os {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 5px;
+        }
+
+        .sys-req-detail {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        .sys-req-sub {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
         .glow {
             width: 400px;
             height: 400px;
@@ -114,11 +301,12 @@
             filter: blur(150px);
             position: fixed;
             z-index: 0;
-            opacity: 0.08;
+            opacity: var(--glow-opacity);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
         /* --- INFO SECTION --- */
@@ -138,15 +326,23 @@
 
         .lang-btn {
             background: #21262d;
-            color: var(--text-dim);
+            color: #8b949e;
             border: 1px solid var(--border-color);
             padding: 5px 12px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.8rem;
+            transition: all 0.2s ease;
         }
 
-        .lang-btn.active {
+        body.light-theme .lang-btn {
+            background: #eaeef2;
+            color: #444c56;
+            border-color: #c8d1da;
+        }
+
+        .lang-btn.active,
+        body.light-theme .lang-btn.active {
             background: var(--accent-color);
             color: #ffffff;
             border-color: var(--accent-color);
@@ -158,6 +354,40 @@
             line-height: 1.6;
         }
 
+        .section-subheading {
+            color: var(--text-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 25px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-list, .changelog-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            background: rgba(139, 148, 158, 0.05);
+            border-radius: 8px;
+            padding: 15px 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-list li, .changelog-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .feature-list li:last-child, .changelog-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-list li::before { content: "✦"; color: var(--accent-color); }
+        .changelog-list li::before { content: "•"; color: var(--success-color); font-weight: bold; }
+
         .warning-text {
             color: var(--warning-color);
             font-weight: bold;
@@ -168,7 +398,7 @@
         }
 
         .platform-title {
-            color: #ffffff;
+            color: var(--text-heading);
             font-weight: 600;
             margin-top: 20px;
             display: block;
@@ -182,6 +412,10 @@
 <body>
     <div class="glow"></div>
 
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+        🌙 Dark Mode
+    </button>
+
     <div class="container">
         <h1>Silver Browser</h1>
         <p>A minimalist, fast, and privacy-focused web browser built with PyQt6. Made for users who demand control and speed without the telemetry bloat.</p>
@@ -191,21 +425,55 @@
             <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver-Browser.v1.1.-.Windows.exe" class="download-btn">Download for Windows (.exe)</a>
             <a href="https://github.com/tudorioan1/silver-browser/releases/download/browser2/Silver.Browser.v1.1.-.macOS.zip" class="download-btn">Download for macOS (.app)</a>
         </div>
+
+        <div class="download-meta">
+            <div class="counter-badge">
+                📦 Total downloads: <span id="dl-count" style="font-weight: bold; color: var(--accent-color);">—</span>
+            </div>
+            <a href="https://github.com/tudorioan1/silver-browser/issues/new" target="_blank" class="bug-report-btn">
+                🐛 Report a Bug
+            </a>
+        </div>
+
+        <div class="screenshot-container">
+            <img id="browser-screenshot" src="https://raw.githubusercontent.com/tudorioan1/silver-browser/main/SilverBrowser-Dark.png" alt="Silver Browser Application Interface View">
+        </div>
+
+        <div class="alpha-note">
+            ⚠️ <strong>Note:</strong> This is an Alpha release. You might encounter minor bugs, they'll be solved in future releases!
+        </div>
     </div>
 
-    <!-- INFO SECTION -->
     <div class="container">
         <div class="info-header">
-            <h2 style="margin:0; font-size: 1.4rem; color: #fff;">Guide & Info</h2>
+            <h2 style="margin:0; font-size: 1.4rem; color: var(--text-heading);">Guide & Info</h2>
             <div class="lang-switch">
                 <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
                 <button id="btn-ro" class="lang-btn" onclick="setLanguage('ro')">RO</button>
             </div>
         </div>
 
-        <!-- English Content -->
         <div id="lang-en" class="info-content">
-            <p style="text-align: center; color: #fff; font-weight: 500;">No install needed! Just run it.</p>
+            <div class="section-subheading">🚀 Features</div>
+            <ul class="feature-list">
+                <li>Fast rendering engine (Chromium-based)</li>
+                <li>Lightweight and fluid performance</li>
+                <li>Privacy focused with zero tracking infrastructure</li>
+            </ul>
+
+            <div class="section-subheading">🆕 What's new in v1.1-alpha (Changelog)</div>
+            <ul class="changelog-list">
+                <li><strong>Dark mode added</strong> — Toggle easily between layouts directly right from the core start page dashboard.</li>
+                <li><strong>Cross-platform support</strong> — Silver Browser is now officially available for macOS and Linux ecosystems!</li>
+                <li><strong>Optimized RAM consumption</strong> — Significantly compressed runtime footprints.</li>
+            </ul>
+
+            <div class="section-subheading">🔄 How to Update</div>
+            <p>To upgrade your installation, simply fetch the newest available build binary directly from this dashboard page and swap out your old application file executable. Your local configuration structures and active browser cookies will remain safely preserved throughout the process.</p>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 25px 0;">
+
+            <p style="text-align: center; color: var(--text-heading); font-weight: 500;">No install needed! Just run it.</p>
             <span class="warning-text">! Warning !</span>
             
             <span class="platform-title">For Windows:</span>
@@ -220,9 +488,27 @@
             <p style="text-align: center; margin-top: 20px; color: var(--accent-color); font-weight: bold;">Enjoy!</p>
         </div>
 
-        <!-- Romanian Content -->
         <div id="lang-ro" class="info-content hidden">
-            <p style="text-align: center; color: #fff; font-weight: 500;">Nu necesită instalare! Doar rulează-l.</p>
+            <div class="section-subheading">🚀 Caracteristici</div>
+            <ul class="feature-list">
+                <li>Motor de randare de mare viteză (bazat pe Chromium)</li>
+                <li>Interfață simplificată, performanță fluidă și rapidă</li>
+                <li>Orientat complet spre confidențialitate, fără sisteme de telemetrie</li>
+            </ul>
+
+            <div class="section-subheading">🆕 Ce este nou în v1.1-alpha (Changelog)</div>
+            <ul class="changelog-list">
+                <li><strong>Mod întunecat adăugat</strong> — Poți schimba facil între teme direct din interfața paginii principale de pornire.</li>
+                <li><strong>Suport multiplatformă</strong> — Silver Browser este acum oficial distribuit și configurat pentru macOS și distribuții Linux!</li>
+                <li><strong>Consum de RAM optimizat</strong> — Amprentă de execuție structural redusă asupra resurselor sistemului.</li>
+            </ul>
+
+            <div class="section-subheading">🔄 Cum se efectuează o Actualizare</div>
+            <p>Pentru a trece la versiunea mai nouă, descarcă pur și simplu ultimul pachet binar publicat pe această pagină web și înlocuiește vechiul tău fișier executabil. Toate preferințele setate și istoricul local vor rămâne intacte.</p>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 25px 0;">
+
+            <p style="text-align: center; color: var(--text-heading); font-weight: 500;">Nu necesită instalare! Doar rulează-l.</p>
             <span class="warning-text">! Atenție !</span>
 
             <span class="platform-title">Pentru Windows:</span>
@@ -238,6 +524,27 @@
         </div>
     </div>
 
+    <div class="sys-reqs">
+        <div class="sys-reqs-title">⚙️ System Requirements</div>
+        <div class="sys-reqs-grid">
+            <div class="sys-req-card">
+                <div class="sys-req-icon">🪟</div>
+                <div class="sys-req-os">Windows</div>
+                <div class="sys-req-detail">Windows 10 / 11</div>
+            </div>
+            <div class="sys-req-card">
+                <div class="sys-req-icon">🍎</div>
+                <div class="sys-req-os">macOS</div>
+                <div class="sys-req-detail">Apple Silicon</div>
+            </div>
+            <div class="sys-req-card">
+                <div class="sys-req-icon">🐧</div>
+                <div class="sys-req-os">Linux</div>
+                <div class="sys-req-detail">All major distros<br><span class="sys-req-sub">tested on Arch</span></div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         Built by <strong>Tudor Ioan</strong> | 
         <a href="https://github.com/tudorioan1" target="_blank">tudorioan1 on GitHub</a>
@@ -245,6 +552,7 @@
     </footer>
 
     <script>
+        // Language Controller
         function setLanguage(lang) {
             const en = document.getElementById('lang-en');
             const ro = document.getElementById('lang-ro');
@@ -263,6 +571,71 @@
                 btnEn.classList.remove('active');
             }
         }
+
+        // Active Theme & Screenshot Toggle Controller
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.getElementById('theme-btn');
+            const screenshot = document.getElementById('browser-screenshot');
+            
+            body.classList.toggle('light-theme');
+            
+            if (body.classList.contains('light-theme')) {
+                themeBtn.innerHTML = '☀️ Light Mode';
+                screenshot.style.opacity = '0';
+                setTimeout(() => {
+                    screenshot.src = 'https://raw.githubusercontent.com/tudorioan1/silver-browser/main/SilverBrowser-Light.png';
+                    screenshot.style.opacity = '1';
+                }, 150);
+            } else {
+                themeBtn.innerHTML = '🌙 Dark Mode';
+                screenshot.style.opacity = '0';
+                setTimeout(() => {
+                    screenshot.src = 'https://raw.githubusercontent.com/tudorioan1/silver-browser/main/SilverBrowser-Dark.png';
+                    screenshot.style.opacity = '1';
+                }, 150);
+            }
+        }
+
+        // Download Counter — shows cached value instantly, always refreshes in background
+        async function updateDownloadCounter() {
+            const el = document.getElementById('dl-count');
+            const CACHE_KEY = 'sb_dl_count';
+
+            // Show cached value immediately if available
+            try {
+                const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+                if (cached) el.innerText = cached.toLocaleString();
+            } catch (_) {}
+
+            // Always fetch fresh from GitHub API in the background
+            try {
+                const res = await fetch('https://api.github.com/repos/tudorioan1/silver-browser/releases', {
+                    headers: { 'Accept': 'application/vnd.github+json' }
+                });
+
+                if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+
+                const releases = await res.json();
+                if (!Array.isArray(releases) || releases.length === 0) throw new Error('No releases found');
+
+                let total = 0;
+                releases.forEach(release => {
+                    (release.assets || []).forEach(asset => {
+                        total += asset.download_count || 0;
+                    });
+                });
+
+                el.innerText = total.toLocaleString();
+                localStorage.setItem(CACHE_KEY, JSON.stringify(total));
+            } catch (err) {
+                console.warn('Download counter failed:', err);
+                if (el.innerText === '—') el.innerText = 'N/A';
+            }
+        }
+
+        // Document Runtime Initialization
+        window.addEventListener('DOMContentLoaded', updateDownloadCounter);
     </script>
 </body>
 </html>
