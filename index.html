@@ -428,7 +428,7 @@
 
         <div class="download-meta">
             <div class="counter-badge">
-                📦 Total downloads: <span id="dl-count" style="font-weight: bold; color: var(--accent-color);">—</span>
+                📦 Total downloads: <img src="https://img.shields.io/github/downloads/tudorioan1/silver-browser/total?style=flat&label=&color=58a6ff&labelColor=transparent" alt="Total downloads" style="height:18px; vertical-align:middle; margin-left:2px;">
             </div>
             <a href="https://github.com/tudorioan1/silver-browser/issues/new" target="_blank" class="bug-report-btn">
                 🐛 Report a Bug
@@ -597,45 +597,6 @@
             }
         }
 
-        // Download Counter — shows cached value instantly, always refreshes in background
-        async function updateDownloadCounter() {
-            const el = document.getElementById('dl-count');
-            const CACHE_KEY = 'sb_dl_count';
-
-            // Show cached value immediately if available
-            try {
-                const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
-                if (cached) el.innerText = cached.toLocaleString();
-            } catch (_) {}
-
-            // Always fetch fresh from GitHub API in the background
-            try {
-                const res = await fetch('https://api.github.com/repos/tudorioan1/silver-browser/releases', {
-                    headers: { 'Accept': 'application/vnd.github+json' }
-                });
-
-                if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
-
-                const releases = await res.json();
-                if (!Array.isArray(releases) || releases.length === 0) throw new Error('No releases found');
-
-                let total = 0;
-                releases.forEach(release => {
-                    (release.assets || []).forEach(asset => {
-                        total += asset.download_count || 0;
-                    });
-                });
-
-                el.innerText = total.toLocaleString();
-                localStorage.setItem(CACHE_KEY, JSON.stringify(total));
-            } catch (err) {
-                console.warn('Download counter failed:', err);
-                if (el.innerText === '—') el.innerText = 'N/A';
-            }
-        }
-
-        // Document Runtime Initialization
-        window.addEventListener('DOMContentLoaded', updateDownloadCounter);
     </script>
 </body>
 </html>
