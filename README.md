@@ -1,5 +1,5 @@
 # silver-browser
-
+![Vibe Coded](https://img.shields.io/badge/Status-Partially_Vibe_Coded-8A2BE2)
 A PyQt6 desktop web browser built on Qt WebEngine/Chromium with privacy-first defaults.
 Privacy features included:
 
